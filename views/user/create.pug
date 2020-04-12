@@ -1,0 +1,32 @@
+include ../layouts/header.pug
+include ../layouts/nav-bar.pug
+
+div(class="container-sm" style="padding: 100px")
+    if errors
+        each error in errors
+            .alert.alert-danger.fade.show= error
+                button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+    form(method="post" action="/user/create")
+            div(class="form-group")
+                label(for="name") Name
+                input(type="text" class="form-control" name="name" required)
+
+            div(class="form-group")
+                label(for="age") Age
+                input(type="Number" class="form-control" name="age" required)
+            
+            div(class="form-group")
+                label(for="numberPhone") Number phone
+                input(type="text" class="form-control" name="phoneNumber" required)
+            
+            div(class="form-group")
+                label(for="name") Email
+                input(type="email" class="form-control" name="email" required)
+
+            div(class="form-group")
+                label(for="password") Password
+                input(type="password" class="form-control" name="password" required)
+
+            button(type="submit" class="btn btn-primary") Submit   
+    

@@ -1,0 +1,43 @@
+include ../layouts/header.pug
+nav(class="navbar navbar-expand-lg navbar-light bg-light")
+    a(class="navbar-brand" href="../user") Dashboard
+    a(class="navbar" href="../user/create") Create
+br
+
+div(class="container-sm" style="padding: 100px")
+    if errors
+        each error in errors
+            .alert.alert-danger.fade.show= error
+                button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+    form(method="post" action="/user/remove")
+            div(class="form-group")
+                label(for="email") Email
+                input(type="email" class="form-control" name="email" required)
+
+            div(class="form-group")
+                label(for="password") Password
+                if values
+                    input(type="password" class="form-control" name="password" required values=values.email)
+                else
+                    input(type="password" class="form-control" name="password" required)
+
+            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#exampleModal') Delete
+
+            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#exampleModalLabel.modal-title Delete User
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            p Do you want to remove user
+                        .modal-footer
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') No
+                            button.btn.btn-primary(type='submit') Yes
+
+script.
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    });
