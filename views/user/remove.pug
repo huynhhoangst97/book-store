@@ -5,6 +5,7 @@ nav(class="navbar navbar-expand-lg navbar-light bg-light")
 br
 
 div(class="container-sm" style="padding: 100px")
+    h1 Remove
     if errors
         each error in errors
             .alert.alert-danger.fade.show= error
@@ -22,22 +23,22 @@ div(class="container-sm" style="padding: 100px")
                 else
                     input(type="password" class="form-control" name="password" required)
 
-            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#exampleModal') Delete
+            button.btn.btn-primary(type='submit', data-toggle='modal', data-target='#exampleModal') Delete
 
-            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5#exampleModalLabel.modal-title Delete User
-                            button.close(type='button', data-dismiss='modal', aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            p Do you want to remove user
-                        .modal-footer
-                            button.btn.btn-secondary(type='button', data-dismiss='modal') No
-                            button.btn.btn-primary(type='submit') Yes
+//-             #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+//-                 .modal-dialog(role='document')
+//-                     .modal-content
+//-                         .modal-header
+//-                             h5#exampleModalLabel.modal-title Delete User
+//-                             button.close(type='button', data-dismiss='modal', aria-label='Close')
+//-                                 span(aria-hidden='true') &times;
+//-                         .modal-body
+//-                             p Do you want to remove user
+//-                         .modal-footer
+//-                             button.btn.btn-secondary(type='button', data-dismiss='modal') No
+//-                             button.btn.btn-primary(type='submit') Yes
 
-script.
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    });
+//- script.
+//-     $('#myModal').on('shown.bs.modal', function () {
+//-         $('#myInput').trigger('focus')
+//-     });

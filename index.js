@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const user = require('./model/user.model')
 const bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
 
 
 require('dotenv').config();
@@ -12,7 +13,9 @@ require('dotenv').config();
 // config express 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser())
 const userRoute = require('./routes/user.route');
+const authRoute = require('./routes/auth.route');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -27,6 +30,7 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 app.use('/user', userRoute)
+app.use('/auth', authRoute)
 
 //start server
 app.listen(port, () => {
