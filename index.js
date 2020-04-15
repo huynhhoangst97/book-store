@@ -13,7 +13,7 @@ require('dotenv').config();
 // config express 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser())
+app.use(cookieParser('c86i7E65qRbgumQvNHuB'))
 const userRoute = require('./routes/user.route');
 const authRoute = require('./routes/auth.route');
 
