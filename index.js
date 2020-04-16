@@ -2,10 +2,9 @@ const express = require('express');
 const port = 3000;
 const app = express();
 const mongoose = require('mongoose');
-const user = require('./model/user.model')
-const bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
-
+const user = require('./model/user.model');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 

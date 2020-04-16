@@ -2,7 +2,7 @@ const userData = require('../model/user.model');
 
 module.exports.requireAuth = async (req, res, next) => {
     if (!req.signedCookies.userId) {
-        res.redirect('auth/login');
+        res.redirect('/auth/login');
         return;
     };
     

@@ -1,5 +1,5 @@
 const userData = require('../model/user.model');
-
+const bcrypt = require('bcrypt');
 
 module.exports.index = async (req, res) => {
     const items = await userData.find()
@@ -17,6 +17,8 @@ module.exports.postCreate = async (req, res) => {
     const age = req.body.age;
     const numberPhone = parseInt(req.body.phoneNumber);
     const email = req.body.email;
+    const password = req.body.password;
+    let userPass = '';
 
     let errors = [];
 
@@ -43,7 +45,19 @@ module.exports.postCreate = async (req, res) => {
         });
         return;
     } else {
-        await userData.create(req.body);
+        bcrypt.genSalt(10, (err,salt) => {
+            bcrypt.hash(password, salt, async (err, passHash) =>{
+                if (err) throw err;
+                await userData.create({
+                    email: email,
+                    age: age,
+                    numberPhone: req.body.numberPhone,
+                    password: passHash,
+                    name: name
+                });
+            });
+        });
+        
         console.log('Create user successfully');
         res.redirect('/user');
     }

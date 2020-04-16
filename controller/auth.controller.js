@@ -1,4 +1,5 @@
 const userData = require('../model/user.model');
+const bcrypt = require('bcrypt');
 
 module.exports.login = (req, res) => {
     res.render('auth/login')
@@ -17,8 +18,10 @@ module.exports.postLogin = async (req, res) => {
         return;
     }
 
-    if(user[0]['password'] !== password){
-        res.render('auth/login',{
+    const match = await bcrypt.compare(password, user[0]['password'])
+
+    if (!match) {
+        res.render('auth/login', {
             errors:[
                 'Wrong password.'
             ]
@@ -26,7 +29,7 @@ module.exports.postLogin = async (req, res) => {
         return;
     }
 
-    res.cookie('userId', user[0]['id'],{
+    res.cookie('userId', user[0]['id'], {
         signed: true
     });
     res.redirect('/user')
