@@ -1,0 +1,23 @@
+include ../layouts/header.pug
+
+div(class="container-sm" style="padding: 100px")
+    h1 Login
+    br
+    if errors
+        each error in errors
+            .alert.alert-danger.fade.show= error
+                button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+    form(method="post" action="")
+            div(class="form-group")
+                label(for="username") Username
+                input(type="username" class="form-control" name="username" required)
+
+            div(class="form-group")
+                label(for="password") Password
+                if values
+                    input(type="password" class="form-control" name="password" required values=values.email)
+                else
+                    input(type="password" class="form-control" name="password" required)
+
+            button.btn.btn-primary(type='submit') Login

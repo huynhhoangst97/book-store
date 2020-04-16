@@ -14,6 +14,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('c86i7E65qRbgumQvNHuB'))
 const userRoute = require('./routes/user.route');
+const adminRoute = require('./routes/admin.route');
 const authRoute = require('./routes/auth.route');
 
 app.set('view engine', 'pug');
@@ -27,9 +28,10 @@ mongoose.connect(process.env.URI_MONGOOSE, optionMongoose)
 // routing 
 app.get('/', (req, res) => {
     res.render('index');
-})
-app.use('/user', userRoute)
-app.use('/auth', authRoute)
+});
+app.use('/user', userRoute);
+app.use('/auth', authRoute);
+app.use('/admin', adminRoute);
 
 //start server
 app.listen(port, () => {

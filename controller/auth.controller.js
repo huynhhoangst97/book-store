@@ -29,7 +29,7 @@ module.exports.postLogin = async (req, res) => {
         return;
     }
 
-    res.cookie('userId', user[0]['id'], {
+    res.cookie('userId', user[0]['id'],{
         signed: true
     });
     res.redirect('/user')

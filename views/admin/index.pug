@@ -1,0 +1,27 @@
+include ../layouts/header.pug
+nav(class="navbar navbar-expand-lg navbar-light bg-light")
+    a(class="navbar-brand" href="./admin") Dashboard
+    a(class="navbar" href="./admin/create") Create
+    a(class="navbar" href="./admin/remove") Remove
+br
+
+.container
+    table.table
+        thead
+            tr
+            th(scope='col') #
+            th(scope='col') Name
+            th(scope='col') Age
+            th(scope='col') Number Phone
+            th(scope='col') Email
+            th(scope='col') Password
+        tbody
+            -var i = 1
+            for user in users
+                tr 
+                    th(scope="row")= i++
+                    td= user.name
+                    td= user.age
+                    td= user.numberPhone
+                    td= user.email
+                    td= user.password

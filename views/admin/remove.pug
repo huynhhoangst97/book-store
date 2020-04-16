@@ -1,0 +1,51 @@
+include ../layouts/header.pug
+nav(class="navbar navbar-expand-lg navbar-light bg-light")
+    a(class="navbar-brand" href="../admin") Dashboard
+    a(class="navbar" href="../admin/create") Create
+br
+
+div(class="container-sm" style="padding: 100px")
+    h1 Remove
+    if errors
+        each error in errors
+            .alert.alert-danger.fade.show= error
+                button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") &times;
+    form(method="post")
+            div(class="form-group")
+                label(for="email") Email:
+                if values
+                    input(type="email" class="form-control" name="email" required values=values.email)
+                else
+                    input(type="email" class="form-control" name="email" required)
+
+            div(class="form-group")
+                label(for="email") Username Admin:
+                if values
+                    input(type="text" class="form-control" name="username" required values=values.username)
+                else
+                    input(type="text" class="form-control" name="username" required)
+
+            div(class="form-group")
+                label(for="password") Password Admin:
+                input(type="password" class="form-control" name="password" required)
+
+            button.btn.btn-primary(type='submit') Delete
+
+//-             #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+//-                 .modal-dialog(role='document')
+//-                     .modal-content
+//-                         .modal-header
+//-                             h5#exampleModalLabel.modal-title Delete User
+//-                             button.close(type='button', data-dismiss='modal', aria-label='Close')
+//-                                 span(aria-hidden='true') &times;
+//-                         .modal-body
+//-                             p Do you want to remove user
+//-                         .modal-footer
+//-                             button.btn.btn-secondary(type='button', data-dismiss='modal') No
+//-                             button.btn.btn-primary(type='submit') Yes
+
+//- script.
+//-     $('#myModal').on('shown.bs.modal', function () {
+//-         $('#myInput').trigger('focus')
+//-     });
